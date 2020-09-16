@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "lite-server --baseDir=app",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint app/scripts/*.js",
     "lint:fix": "eslint --fix app/scripts/*.js"
@@ -26,6 +27,9 @@
   "homepage": "https://github.com/gabrielgarci/canvas-snake#readme",
   "devDependencies": {
     "eslint": "^7.9.0",
-    "husky": "^4.3.0"
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.3.0",
+    "lite-server": "^2.5.4"
   }
 }
