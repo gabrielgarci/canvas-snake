@@ -1,0 +1,31 @@
+{
+  "name": "canvas-snake",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint app/scripts/*.js",
+    "lint:fix": "eslint --fix app/scripts/*.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:fix",
+      "pre-push": "npm run lint"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielgarci/canvas-snake.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielgarci/canvas-snake/issues"
+  },
+  "homepage": "https://github.com/gabrielgarci/canvas-snake#readme",
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "husky": "^4.3.0"
+  }
+}
