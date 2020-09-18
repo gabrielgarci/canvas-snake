@@ -31,7 +31,7 @@ const foodPiece = { };
 const moveFood = () => {
   foodPiece.x = Math.floor(Math.random() * boardSize.x);
   foodPiece.y = Math.floor(Math.random() * boardSize.y);
-  if (snake.body.some(bodyPiece => (bodyPiece.x === foodPiece.x && bodyPiece.y === foodPiece.y))) {
+  if (snake.body.some((bodyPiece) => (bodyPiece.x === foodPiece.x && bodyPiece.y === foodPiece.y))) {
     moveFood();
   }
 };
@@ -39,13 +39,10 @@ const moveFood = () => {
 const newGame = () => {
   snake.direction = 'right';
   snake.body = [
-    { x: 16, y: 13, isFood: false },
-    { x: 16, y: 12, isFood: false },
-    { x: 16, y: 11, isFood: false },
-    { x: 16, y: 10, isFood: true },
-    { x: 16, y: 9, isFood: false },
-    { x: 16, y: 8, isFood: false },
     { x: 15, y: 8, isFood: false },
+    { x: 14, y: 8, isFood: false },
+    { x: 13, y: 8, isFood: false },
+    { x: 12, y: 8, isFood: false },
   ];
   moveFood();
 };

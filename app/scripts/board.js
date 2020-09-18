@@ -14,6 +14,8 @@ const printCircle = (x, y, color, size) => {
 
 const rectCorrection = (pixelSize / 2);
 
+const printEye = (x, y) => printCircle(x, y, 'black', pixelSize / 5);
+
 const printHead = (x, y) => {
   const headSize = pixelSize * 1.5;
   ctx.fillRect(
@@ -22,8 +24,24 @@ const printHead = (x, y) => {
     headSize,
     headSize,
   );
-  printCircle(x + (headSize * (1 / 10) - rectCorrection), y + (headSize * (1 / 3)), 'black', pixelSize / 5);
-  printCircle(x - (headSize * (1 / 10) - rectCorrection), y + (headSize * (1 / 3)), 'black', pixelSize / 5);
+  switch (game.snake.direction) {
+    case 'right':
+      printEye(x + (headSize * (1 / 3)), y + (headSize * (1 / 10) - rectCorrection));
+      printEye(x + (headSize * (1 / 3)), y - (headSize * (1 / 10) - rectCorrection));
+      break;
+    case 'left':
+      printEye(x - (headSize * (1 / 3)), y + (headSize * (1 / 10) - rectCorrection));
+      printEye(x - (headSize * (1 / 3)), y - (headSize * (1 / 10) - rectCorrection));
+      break;
+    case 'top':
+      printEye(x + (headSize * (1 / 10) - rectCorrection), y - (headSize * (1 / 3)));
+      printEye(x - (headSize * (1 / 10) - rectCorrection), y - (headSize * (1 / 3)));
+      break;
+    default:
+      printEye(x + (headSize * (1 / 10) - rectCorrection), y + (headSize * (1 / 3)));
+      printEye(x - (headSize * (1 / 10) - rectCorrection), y + (headSize * (1 / 3)));
+      break;
+  }
 };
 
 const printBody = (x, y) => {
