@@ -15,11 +15,11 @@ const directionInfo = {
   },
   top: {
     oposite: 'bottom',
-    vector: [0, 1],
+    vector: [0, -1],
   },
   bottom: {
     oposite: 'top',
-    vector: [0, -1],
+    vector: [0, 1],
   },
 };
 
@@ -31,20 +31,11 @@ const foodPiece = { };
 const moveFood = () => {
   foodPiece.x = Math.floor(Math.random() * boardSize.x);
   foodPiece.y = Math.floor(Math.random() * boardSize.y);
-  if (snake.body.some((bodyPiece) => (bodyPiece.x === foodPiece.x && bodyPiece.y === foodPiece.y))) {
+  if (
+    snake.body.some((bodyPiece) => (bodyPiece.x === foodPiece.x && bodyPiece.y === foodPiece.y))
+    || (foodPiece.x === 0 || foodPiece.y === 0)) {
     moveFood();
   }
-};
-
-const newGame = () => {
-  snake.direction = 'right';
-  snake.body = [
-    { x: 15, y: 8, isFood: false },
-    { x: 14, y: 8, isFood: false },
-    { x: 13, y: 8, isFood: false },
-    { x: 12, y: 8, isFood: false },
-  ];
-  moveFood();
 };
 
 // Snake functionality
@@ -62,11 +53,15 @@ const move = () => {
   };
 
   if (newPosition.x === boardSize.x) {
-    newPosition.x = 1;
+    newPosition.x = 0;
+  } else if (newPosition.x === 0) {
+    newPosition.x = boardSize.x;
   }
 
   if (newPosition.y === boardSize.y) {
-    newPosition.y = 1;
+    newPosition.y = 0;
+  } else if (newPosition.y === 0) {
+    newPosition.y = boardSize.y;
   }
 
   if (!snake.body.some((position) => position.x === newPosition.x && position.y === newPosition.y)) {
@@ -77,6 +72,8 @@ const move = () => {
 
     if (!snake.body[snake.body.length - 1].isFood) {
       snake.body.splice(-1, 1);
+    } else {
+      snake.body[snake.body.length - 1].isFood = false;
     }
 
     snake.body.unshift(newPosition);
@@ -87,11 +84,40 @@ const move = () => {
   return false;
 };
 
+const newGame = () => {
+  snake.direction = 'right';
+  snake.body = [
+    { x: 15, y: 8, isFood: false },
+    { x: 14, y: 8, isFood: false },
+    { x: 13, y: 8, isFood: false },
+    { x: 12, y: 8, isFood: false },
+  ];
+  moveFood();
+  setInterval(() => move(), 200);
+  window.onkeydown = (key) => {
+    switch (key.keyCode) {
+      case 37:
+        changeDirection('left');
+        break;
+      case 38:
+        changeDirection('top');
+        break;
+      case 39:
+        changeDirection('right');
+        break;
+      case 40:
+        changeDirection('bottom');
+        break;
+      default:
+        break;
+    }
+  };
+};
+
 export {
   boardSize,
   newGame,
   snake,
   foodPiece,
   changeDirection,
-  move,
 };

@@ -53,8 +53,9 @@ const printBody = (x, y) => {
   );
 };
 
-const draw = (snake, food) => {
-  snake.body.forEach((piece, index) => {
+const draw = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  game.snake.body.forEach((piece, index) => {
     const xCoord = (piece.x / game.boardSize.x) * canvas.width;
     const yCoord = (piece.y / game.boardSize.y) * canvas.height;
     if (!piece.isFood || index === 0) {
@@ -67,9 +68,11 @@ const draw = (snake, food) => {
     }
   });
 
-  const xCoord = (food.x / game.boardSize.x) * canvas.width;
-  const yCoord = (food.y / game.boardSize.y) * canvas.height;
+  const xCoord = (game.foodPiece.x / game.boardSize.x) * canvas.width;
+  const yCoord = (game.foodPiece.y / game.boardSize.y) * canvas.height;
   printCircle(xCoord, yCoord, 'red', pixelSize / 1.5);
+
+  window.requestAnimationFrame(draw);
 };
 
 export {
