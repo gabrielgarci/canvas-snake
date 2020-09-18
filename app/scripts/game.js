@@ -1,6 +1,6 @@
 // Create board settings and direction dictionary
 const boardSize = {
-  x: 31,
+  x: 30,
   y: 15,
 };
 
@@ -31,13 +31,19 @@ const foodPiece = { };
 const moveFood = () => {
   foodPiece.x = Math.floor(Math.random() * boardSize.x);
   foodPiece.y = Math.floor(Math.random() * boardSize.y);
+  if (snake.body.some(bodyPiece => (bodyPiece.x === foodPiece.x && bodyPiece.y === foodPiece.y))) {
+    moveFood();
+  }
 };
 
 const newGame = () => {
   snake.direction = 'right';
   snake.body = [
-    { x: 18, y: 8, isFood: false },
-    { x: 17, y: 8, isFood: false },
+    { x: 16, y: 13, isFood: false },
+    { x: 16, y: 12, isFood: false },
+    { x: 16, y: 11, isFood: false },
+    { x: 16, y: 10, isFood: true },
+    { x: 16, y: 9, isFood: false },
     { x: 16, y: 8, isFood: false },
     { x: 15, y: 8, isFood: false },
   ];
@@ -85,6 +91,7 @@ const move = () => {
 };
 
 export {
+  boardSize,
   newGame,
   snake,
   foodPiece,

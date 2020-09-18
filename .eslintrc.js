@@ -9,6 +9,8 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "import/extensions": ["error", "always"]
+        "import/extensions": ["error", "always"],
+        "max-len": ["error", { "code": 120 }],
+        "no-unused-expressions": ["error", {"allowTernary": true}]
     }
 }
