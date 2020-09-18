@@ -1,5 +1,5 @@
-import * as game from './game.js';
-import * as board from './board.js';
+import { newGame } from './game.js';
+import { draw } from './board.js';
 
-game.newGame();
-document.body.onload = board.draw();
+newGame();
+document.body.onload = draw();

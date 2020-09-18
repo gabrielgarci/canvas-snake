@@ -1,13 +1,13 @@
-import * as utils from './utils.js';
+import { Snake, boardSize, directionInfo } from './utils.js';
 
 // Create snake and a foodPiece
-const snake = new utils.Snake();
+const snake = new Snake();
 
 const foodPiece = { };
 
 const moveFood = () => {
-  foodPiece.x = Math.floor(Math.random() * utils.boardSize.x);
-  foodPiece.y = Math.floor(Math.random() * utils.boardSize.y);
+  foodPiece.x = Math.floor(Math.random() * boardSize.x);
+  foodPiece.y = Math.floor(Math.random() * boardSize.y);
   if (
     snake.body.some((bodyPiece) => (bodyPiece.x === foodPiece.x && bodyPiece.y === foodPiece.y))
     || (foodPiece.x === 0 || foodPiece.y === 0)) {
@@ -16,30 +16,37 @@ const moveFood = () => {
 };
 
 // Snake functionality
+let futureDirection;
+
 const turnSnake = (newDirection) => {
-  if (newDirection !== utils.directionInfo[snake.direction].oposite) {
+  if (newDirection !== directionInfo[snake.direction].oposite) {
     snake.direction = newDirection;
   }
 };
 
+// Move to the oposite side of the board if snake is in the border
+const checkBorders = (position) => {
+  const correctedPosition = {};
+  Object.keys(boardSize).forEach((axis) => {
+    if (position[axis] === boardSize[axis]) {
+      correctedPosition[axis] = 1;
+    } else if (position[axis] === 0) {
+      correctedPosition[axis] = boardSize[axis] - 1;
+    } else {
+      correctedPosition[axis] = position[axis];
+    }
+  });
+  return correctedPosition;
+};
+
 const move = () => {
-  const newPosition = {
-    x: snake.body[0].x + utils.directionInfo[snake.direction].vector[0],
-    y: snake.body[0].y + utils.directionInfo[snake.direction].vector[1],
-    isFood: false,
+  const possiblePosition = {
+    x: snake.body[0].x + directionInfo[snake.direction].vector[0],
+    y: snake.body[0].y + directionInfo[snake.direction].vector[1],
   };
 
-  if (newPosition.x === utils.boardSize.x) {
-    newPosition.x = 0;
-  } else if (newPosition.x === 0) {
-    newPosition.x = utils.boardSize.x;
-  }
-
-  if (newPosition.y === utils.boardSize.y) {
-    newPosition.y = 0;
-  } else if (newPosition.y === 0) {
-    newPosition.y = utils.boardSize.y;
-  }
+  const newPosition = checkBorders(possiblePosition);
+  newPosition.isFood = false;
 
   if (!snake.body.some((position) => position.x === newPosition.x && position.y === newPosition.y)) {
     if (newPosition.x === foodPiece.x && newPosition.y === foodPiece.y) {
@@ -54,31 +61,35 @@ const move = () => {
     }
 
     snake.body.unshift(newPosition);
-
-    return true;
   }
 
-  return false;
+  if (futureDirection && futureDirection !== snake.direction) {
+    turnSnake(futureDirection);
+  }
 };
 
 const newGame = () => {
   moveFood();
-  setInterval(() => move(), 200);
+  setInterval(() => move(), 175);
 
   window.onkeydown = (key) => {
     switch (key.keyCode) {
       case 37:
-        turnSnake('left');
+        futureDirection = 'left';
         break;
+
       case 38:
-        turnSnake('top');
+        futureDirection = 'top';
         break;
+
       case 39:
-        turnSnake('right');
+        futureDirection = 'right';
         break;
+
       case 40:
-        turnSnake('bottom');
+        futureDirection = 'bottom';
         break;
+
       default:
         break;
     }
