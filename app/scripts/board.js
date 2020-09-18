@@ -1,9 +1,10 @@
 import * as game from './game.js';
+import * as utils from './utils.js';
 
 const canvas = document.getElementById('playground');
 const ctx = canvas.getContext('2d');
 
-const pixelSize = (1 / game.boardSize.x) * canvas.width;
+const pixelSize = (1 / utils.boardSize.x) * canvas.width;
 
 const printCircle = (x, y, color, size) => {
   ctx.beginPath();
@@ -56,8 +57,8 @@ const printBody = (x, y) => {
 const draw = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.snake.body.forEach((piece, index) => {
-    const xCoord = (piece.x / game.boardSize.x) * canvas.width;
-    const yCoord = (piece.y / game.boardSize.y) * canvas.height;
+    const xCoord = (piece.x / utils.boardSize.x) * canvas.width;
+    const yCoord = (piece.y / utils.boardSize.y) * canvas.height;
     if (!piece.isFood || index === 0) {
       ctx.beginPath();
       ctx.fillStyle = 'green';
@@ -68,8 +69,8 @@ const draw = () => {
     }
   });
 
-  const xCoord = (game.foodPiece.x / game.boardSize.x) * canvas.width;
-  const yCoord = (game.foodPiece.y / game.boardSize.y) * canvas.height;
+  const xCoord = (game.foodPiece.x / utils.boardSize.x) * canvas.width;
+  const yCoord = (game.foodPiece.y / utils.boardSize.y) * canvas.height;
   printCircle(xCoord, yCoord, 'red', pixelSize / 1.5);
 
   window.requestAnimationFrame(draw);
