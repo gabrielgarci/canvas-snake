@@ -12,6 +12,8 @@ module.exports = {
         "import/extensions": ["error", "always"],
         "max-len": ["error", { "code": 120 }],
         "no-unused-expressions": ["error", {"allowTernary": true}],
-        "linebreak-style": ["error", "windows"]
+        "linebreak-style": ["error", "windows"],
+        "space-in-parens": ["error", "always"],
+        "no-param-reassign": ["error", { "props": false }]
     }
 }
