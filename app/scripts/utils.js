@@ -1,6 +1,20 @@
+const canvas = document.getElementById('playground');
+const ctx = canvas.getContext('2d');
+
 const boardSize = {
   x: 30,
   y: 15,
+};
+
+const pixelSize = (1 / boardSize.x) * canvas.width;
+
+const rectCorrection = (pixelSize / 2); // Used to center the prints
+
+const printCircle = (x, y, color, size) => {
+  ctx.beginPath();
+  ctx.arc(x, y, size, 0, 2 * Math.PI);
+  ctx.fillStyle = color;
+  ctx.fill();
 };
 
 const directionInfo = {
@@ -35,7 +49,12 @@ class Snake {
 }
 
 export {
+  canvas,
+  ctx,
+  pixelSize,
   boardSize,
+  rectCorrection,
+  printCircle,
   directionInfo,
   Snake,
 };
