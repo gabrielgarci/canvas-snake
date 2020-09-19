@@ -58,6 +58,7 @@ const move = ( snake, foodPiece ) => {
   if ( !snake.body.some( ( position ) => position.x === newPosition.x && position.y === newPosition.y ) ) {
     if ( newPosition.x === foodPiece.coords.x && newPosition.y === foodPiece.coords.y ) {
       newPosition.isFood = true;
+      document.getElementById( 'points' ).innerHTML = snake.body.length - 3;
       foodPiece.replace( snake );
     }
 

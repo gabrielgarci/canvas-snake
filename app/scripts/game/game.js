@@ -26,6 +26,7 @@ const endGame = () => {
 };
 
 const newGame = () => {
+  document.getElementById( 'points' ).innerHTML = 0;
   resetSnake();
   foodPiece.replace( snake );
   frameInterval = setInterval( () => {
