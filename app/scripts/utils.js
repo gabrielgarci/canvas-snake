@@ -8,7 +8,7 @@ const boardSize = {
 
 const pixelSize = ( 1 / boardSize.x ) * canvas.width;
 
-const rectCorrection = ( pixelSize / 2 ); // Used to center the prints
+const rectCorrection = ( pixelSize / 2 );
 
 const printCircle = ( x, y, color, size ) => {
   ctx.beginPath();

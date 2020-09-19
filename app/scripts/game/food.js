@@ -8,7 +8,7 @@ const foodPiece = {
     if (
       snake.body.some( ( bodyPiece ) => ( bodyPiece.x === foodPiece.coords.x && bodyPiece.y === foodPiece.coords.y ) )
         || ( foodPiece.coords.x === 0 || foodPiece.coords.y === 0 ) ) {
-      foodPiece.replace();
+      foodPiece.replace( snake );
     }
   },
 };

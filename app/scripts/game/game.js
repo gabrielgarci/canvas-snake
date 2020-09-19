@@ -1,9 +1,7 @@
 import { move, changeDirection } from './snake-animation.js';
 import foodPiece from './food.js';
 
-// Create snake and a foodPiece
 const snake = { };
-let isAlive = true;
 let frameInterval;
 
 const resetSnake = () => {
@@ -14,18 +12,25 @@ const resetSnake = () => {
     { x: 13, y: 8, isFood: false },
     { x: 12, y: 8, isFood: false },
   ];
+  snake.isAlive = true;
 };
 
 const endGame = () => {
   clearInterval( frameInterval );
+  const snakeBodyCopy = [...snake.body];
+  let blinkNumber = 0;
+  const blinkInterval = setInterval( () => {
+    snake.body = blinkNumber % 2 ? snakeBodyCopy : [];
+    blinkNumber < 7 ? blinkNumber += 1 : clearInterval( blinkInterval );
+  }, 175 );
 };
 
 const newGame = () => {
   resetSnake();
   foodPiece.replace( snake );
   frameInterval = setInterval( () => {
-    isAlive = move( snake, foodPiece );
-    if ( !isAlive ) endGame();
+    snake.isAlive = move( snake, foodPiece );
+    if ( !snake.isAlive ) endGame();
   }, 175 );
 
   window.onkeydown = ( key ) => changeDirection( key.keyCode );

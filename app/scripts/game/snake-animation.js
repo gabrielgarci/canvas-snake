@@ -1,6 +1,5 @@
 import { directionInfo, boardSize } from '../utils.js';
 
-// Snake functionality
 let futureDirection;
 
 const turnSnake = ( snake, newDirection ) => {
