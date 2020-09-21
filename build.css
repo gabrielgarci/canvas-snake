@@ -1,1 +1,61 @@
-@font-face{font-family:pixel-font;src:url(/canvas-snake/125cc8ad23e2587585afd54d62886d84.ttf)}body{width:100vw;height:100vh;margin:0}.game,body{display:flex;justify-content:center;align-items:center}.game{flex-direction:column;position:relative}.game__score{width:100%;margin:0;text-align:right;padding-right:10px;border:solid #000;border-width:1px 1px 0;box-sizing:border-box;font-family:pixel-font;background-color:#96c489;padding-bottom:5px}.game__restart{display:none;cursor:pointer;position:absolute;top:70px}.game__restart img{width:50px}.game__restart:hover{top:65px}.game__restart:hover img{width:60px}canvas{border:1px solid #000;border-top:0 solid #000;background-color:#cff3c6}
+@font-face{
+    font-family: 'pixel-font';
+    src: url(/125cc8ad23e2587585afd54d62886d84.ttf);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.game__score {
+    width: 100%;
+    margin: 0;
+    text-align: right;
+    padding-right: 10px;
+    border-width: 1px 1px 0 1px;
+    border-color: black;
+    border-style: solid;
+    box-sizing: border-box;
+    font-family: 'pixel-font';
+    background-color:  rgb(150, 196, 137);
+    padding-bottom: 5px;
+}
+
+.game__restart{
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 70px;
+}
+
+.game__restart img{
+    width: 50px;
+}
+
+.game__restart:hover{
+    top: 65px;
+}
+
+.game__restart:hover img{
+    width: 60px;
+}
+
+canvas {
+    border-width: 0 1px 1px 1px;
+    border-color: black;
+    border-style: solid;
+    background-color: rgb(207, 243, 198);
+}
