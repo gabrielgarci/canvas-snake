@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "lite-server --baseDir=app",
+    "start": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint app/scripts/**/*.js",
-    "lint:fix": "eslint --fix app/scripts/**/*.js"
+    "lint": "eslint src/app/**/*.js",
+    "lint:fix": "eslint --fix src/app/**/*.js"
   },
   "husky": {
     "hooks": {
@@ -15,11 +15,8 @@
       "pre-push": "npm run lint"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gabrielgarci/canvas-snake.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/gabrielgarci/canvas-snake.git",
+  "author": "Gabriel García Rodríguez <ggarciaro@minsait.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gabrielgarci/canvas-snake/issues"
@@ -29,7 +26,10 @@
     "eslint": "^7.9.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
+    "html-webpack-plugin": "^4.4.1",
     "husky": "^4.3.0",
-    "lite-server": "^2.5.4"
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }
