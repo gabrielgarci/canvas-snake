@@ -13,6 +13,7 @@ const resetSnake = () => {
     { x: 12, y: 8, isFood: false },
   ];
   snake.isAlive = true;
+  changeDirection( 'right' );
 };
 
 const endGame = () => {
@@ -21,7 +22,13 @@ const endGame = () => {
   let blinkNumber = 0;
   const blinkInterval = setInterval( () => {
     snake.body = blinkNumber % 2 ? snakeBodyCopy : [];
-    blinkNumber < 7 ? blinkNumber += 1 : clearInterval( blinkInterval );
+    if ( blinkNumber < 7 ) {
+      blinkNumber += 1;
+    } else {
+      clearInterval( blinkInterval );
+      document.getElementById( 'playground' ).style.opacity = 0.5;
+      document.getElementById( 'restartBtn' ).style.display = 'block';
+    }
   }, 175 );
 };
 
@@ -37,8 +44,15 @@ const newGame = () => {
   window.onkeydown = ( key ) => changeDirection( key.keyCode );
 };
 
+const restartGame = () => {
+  document.getElementById( 'restartBtn' ).style.display = 'none';
+  document.getElementById( 'playground' ).style.opacity = 1;
+  newGame();
+};
+
 export {
   newGame,
   snake,
   foodPiece,
+  restartGame,
 };

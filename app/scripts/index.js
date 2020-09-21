@@ -1,5 +1,6 @@
-import { newGame } from './game/game.js';
+import { newGame, restartGame } from './game/game.js';
 import draw from './canvas/canvas.js';
 
 newGame();
+document.getElementById( 'restartBtn' ).onclick = restartGame;
 document.body.onload = draw();

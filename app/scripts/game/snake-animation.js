@@ -8,26 +8,30 @@ const turnSnake = ( snake, newDirection ) => {
   }
 };
 
-const changeDirection = ( code ) => {
-  switch ( code ) {
-    case 37:
-      futureDirection = 'left';
-      break;
+const changeDirection = ( direction ) => {
+  if ( typeof direction === 'number' ) {
+    switch ( direction ) {
+      case 37:
+        futureDirection = 'left';
+        break;
 
-    case 38:
-      futureDirection = 'top';
-      break;
+      case 38:
+        futureDirection = 'top';
+        break;
 
-    case 39:
-      futureDirection = 'right';
-      break;
+      case 39:
+        futureDirection = 'right';
+        break;
 
-    case 40:
-      futureDirection = 'bottom';
-      break;
+      case 40:
+        futureDirection = 'bottom';
+        break;
 
-    default:
-      break;
+      default:
+        break;
+    }
+  } else {
+    futureDirection = direction;
   }
 };
 
