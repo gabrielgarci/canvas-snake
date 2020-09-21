@@ -1,1 +1,106 @@
-@font-face{font-family:pixel-font;src:url(/canvas-snake/125cc8ad23e2587585afd54d62886d84.ttf)}body{width:100vw;height:100vh;margin:0}.game,body{display:flex;justify-content:center;align-items:center}.game{flex-direction:column;position:relative}.game__score{width:100%;margin:0;text-align:right;padding-right:10px;border:solid #000;border-width:1px 1px 0;box-sizing:border-box;font-family:pixel-font;background-color:#96c489;padding-bottom:5px}.game__restart{display:none;cursor:pointer;position:absolute;top:70px}.game__restart img{width:50px}.game__restart:hover{top:65px}.game__restart:hover img{width:60px}canvas{border:1px solid #000;border-top:0 solid #000;background-color:#cff3c6}
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.game__score {
+    width: 100%;
+    margin: 0;
+    text-align: right;
+    padding-right: 10px;
+    border-width: 1px 1px 0 1px;
+    border-color: black;
+    border-style: solid;
+    box-sizing: border-box;
+    font-family: 'pixel-font';
+    background-color:  rgb(150, 196, 137);
+    padding-bottom: 5px;
+}
+
+.game__restart{
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 70px;
+}
+
+.game__restart img{
+    width: 50px;
+}
+
+.game__restart:hover{
+    top: 65px;
+}
+
+.game__restart:hover img{
+    width: 60px;
+}
+
+canvas {
+    border-width: 0 1px 1px 1px;
+    border-color: black;
+    border-style: solid;
+    background-color: rgb(207, 243, 198);
+}
+.block {
+    width: 60px;
+    height: 60px;
+    content: '';
+    box-sizing: border-box;
+    background: rgb(241, 234, 234) url(/134ac118526de3748da940ceee6c1b26.svg) no-repeat center;
+    border-width: 1px 1px 0 1px;
+    border-radius: 60px 60px 0 0;
+    border-color: #5e5e5e;
+    border-style: solid;
+
+}
+
+.controls{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.controls__sides{
+    display: flex;
+}
+
+.controls__left {
+    transform: rotate(270deg);
+}
+
+.controls__right {
+    transform: rotate(90deg);
+}
+
+.controls__bottom {
+    transform: rotate(180deg);
+}
+
+.controls__center{
+    border: none;
+    background-image: none;
+    border-radius: 0;
+}
+
+@font-face{
+    font-family: 'pixel-font';
+    src: url(/125cc8ad23e2587585afd54d62886d84.ttf);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: #3D4053;
+}
+
+
