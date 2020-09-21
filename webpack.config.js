@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: __dirname + '/dist', // Folder to store generated bundle
     filename: 'bundle.js', // Name of generated bundle after build
-    publicPath: '/canvas-snake/' // public URL of the output directory when referenced in a browser
+    publicPath: '/' // public URL of the output directory when referenced in a browser
   },
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],

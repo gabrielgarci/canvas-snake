@@ -1,0 +1,41 @@
+.block {
+    width: 60px;
+    height: 60px;
+    content: '';
+    box-sizing: border-box;
+    background: rgb(241, 234, 234) url(../assets/images/arrow.svg) no-repeat center;
+    border-width: 1px 1px 0 1px;
+    border-radius: 60px 60px 0 0;
+    border-color: #5e5e5e;
+    border-style: solid;
+
+}
+
+.controls{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.controls__sides{
+    display: flex;
+}
+
+.controls__left {
+    transform: rotate(270deg);
+}
+
+.controls__right {
+    transform: rotate(90deg);
+}
+
+.controls__bottom {
+    transform: rotate(180deg);
+}
+
+.controls__center{
+    border: none;
+    background-image: none;
+    border-radius: 0;
+}
