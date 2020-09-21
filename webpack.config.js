@@ -9,13 +9,18 @@ module.exports = {
   output: {
     path: __dirname + '/dist', // Folder to store generated bundle
     filename: 'bundle.js', // Name of generated bundle after build
-    publicPath: '/' // public URL of the output directory when referenced in a browser
+    publicPath: '/canvas-snake/' // public URL of the output directory when referenced in a browser
   },
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
   module: { // where we defined file patterns and their loaders
-    rules: [{
+    rules: [
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
+      {
         test: /\.js$/,
         use: 'babel-loader',
         exclude: [
